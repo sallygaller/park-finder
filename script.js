@@ -12,9 +12,7 @@ function formatQueryParems(parems) {
     else {
       queryString += `stateCode=${parems.stateCode[i]}`}
   }
-  console.log(queryString)
   const queryItems = `${queryString}&limit=${parems.limit}&api_key=${parems.api_key}`
-  console.log(queryItems)
   return queryItems;
 }
 
@@ -41,10 +39,8 @@ function getNationalParks(searchState, searchLimit) {
     limit: searchLimit,
     api_key: apiKey,
   }
-  console.log(parems);
   const queryString = formatQueryParems(parems);
   const url = searchURL + '?' + queryString;
-  console.log(url);
   
   fetch(url)
   .then(response => {
@@ -62,7 +58,6 @@ function getNationalParks(searchState, searchLimit) {
 function watchForm() {
   $('form').submit(event => {
     event.preventDefault();
-    // console.log("form submit!")
     const search = $('#js-search-state').val();
     const searchLimit = $('#js-limit').val();
     const removeSpace = search.replace(/[\s,]+/g, ',');
